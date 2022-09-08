@@ -14,7 +14,7 @@ pipeline {
     stage('Building Docker image'){
       steps{
         sshagent(['101']) {
-         sh "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q prashanthg@172.29.181.114 'cd /home/prashanthg/DockerProjects/My_notes && sudo docker buil -t projecttest-img ."
+         sh "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q prashanthg@172.29.181.114 'cd /home/prashanthg/DockerProjects/My_notes && sudo docker buil -t projecttest-img .'"
         }  
       }
     
