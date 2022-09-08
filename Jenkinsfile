@@ -3,12 +3,19 @@ pipeline {
   agent any
   
   stages{
-    stage('cloning files from git repo') {
+    stage('Removing old file and Git CheckOut') {
       steps{
-        sh "rm -rf /var/lib/jenkins/workspace/My_notes/*"
-       
-        sh "git clone https://github.com/prashanthgrebel/My_notes.git"
+        sshagent(['101']) {
+          sh ""
+          sh "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q prashanthg@172.29.181.114 'cd /home/prashanthg/DockerProjects && git clone https://github.com/prashanthgrebel/My_notes.git'"
+        }
       }
+    }
+    stage('Building Docker image'){
+      steps{
+        sh "echo 'Under testing'"
+      }
+    
     }
   
   }
