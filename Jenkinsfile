@@ -21,7 +21,7 @@ pipeline {
     stage('Launching Container'){
       steps{
         sshagent(['101']){
-          sh "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q prashanthg@172.29.181.114 'sudo docker run -d --name nginx_v1.0 --privileged=true -v /etc/hosts:/etc/hosts -p 999:80 projecttest-img:latest /usr/sbin/init'"
+          sh "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -q prashanthg@172.29.181.114 'bash /home/prashanthg/scripts/nginx_v1.0.sh'"
         }
       }
     }
